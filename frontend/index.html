@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency Converter</title>
+</head>
+<body>
+<h2>Currency Converter</h2>
+
+<select id="fromCurrency"></select>
+<select id="toCurrency"></select>
+<input type="number" id="amount" placeholder="Amount" />
+<button onclick="convert()">Convert</button>
+
+<p id="result"></p>
+
+<hr>
+
+<h3>Exchange Rate</h3>
+<select id="rateFrom"></select>
+<select id="rateTo"></select>
+<button onclick="getRate()">Get Rate</button>
+
+<p id="rateResult"></p>
+
+<script>
+const currencies = ["USD", "INR", "SGD", "EUR", "GBP", "JPY"];
+const backend = "http://127.0.0.1:5000";
+
+function loadDropdowns() {
+    ["fromCurrency", "toCurrency", "rateFrom", "rateTo"].forEach(id => {
+        const select = document.getElementById(id);
+        currencies.forEach(cur => {
+            const opt = document.createElement("option");
+            opt.value = cur;
+            opt.text = cur;
+            select.add(opt);
+        });
+    });
+}
+
+async function convert() {
+    const from = fromCurrency.value;
+    const to = toCurrency.value;
+    const amount = amount.value;
+
+    const res = await fetch(`${backend}/convert?from=${from}&to=${to}&amount=${amount}`);
+    const data = await res.json();
+
+    result.innerText = `Converted Amount: ${data.convertedAmount}`;
+}
+
+async function getRate() {
+    const from = rateFrom.value;
+    const to = rateTo.value;
+
+    const res = await fetch(`${backend}/rate?from=${from}&to=${to}`);
+    const data = await res.json();
+
+    rateResult.innerText = `1 ${from} = ${data.rate} ${to}`;
+}
+
+loadDropdowns();
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "USD_INR": 83.0,
+  "INR_USD": 0.012,
+  "USD_SGD": 1.35,
+  "SGD_USD": 0.74,
+  "USD_EUR": 0.92,
+  "EUR_USD": 1.08,
+  "USD_GBP": 0.79,
+  "GBP_USD": 1.27,
+  "USD_JPY": 148.5,
+  "JPY_USD": 0.0067,
+  "INR_EUR": 0.011,
+  "EUR_INR": 89.0,
+  "SGD_EUR": 0.66,
+  "EUR_SGD": 1.52,
+  "GBP_EUR": 1.16,
+  "EUR_GBP": 0.86,
+  "INR_GBP": 0.0096,
+  "GBP_INR": 104.2,
+  "JPY_EUR": 0.0063,
+  "EUR_JPY": 158.0
+}
