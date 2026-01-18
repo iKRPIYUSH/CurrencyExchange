@@ -39,24 +39,24 @@ function loadDropdowns() {
 }
 
 async function convert() {
-    const from = fromCurrency.value;
-    const to = toCurrency.value;
-    const amount = amount.value;
+    const from = document.getElementById('fromCurrency').value;
+    const to = document.getElementById('toCurrency').value;
+    const amount = document.getElementById('amount').value;
 
     const res = await fetch(`${backend}/convert?from=${from}&to=${to}&amount=${amount}`);
     const data = await res.json();
 
-    result.innerText = `Converted Amount: ${data.convertedAmount}`;
+    document.getElementById('result').innerText = `Converted Amount: ${data.convertedAmount}`;
 }
 
 async function getRate() {
-    const from = rateFrom.value;
-    const to = rateTo.value;
+    const from = document.getElementById('rateFrom').value;
+    const to = document.getElementById('rateTo').value;
 
     const res = await fetch(`${backend}/rate?from=${from}&to=${to}`);
     const data = await res.json();
 
-    rateResult.innerText = `1 ${from} = ${data.rate} ${to}`;
+    document.getElementById('rateResult').innerText = `1 ${from} = ${data.rate} ${to}`;
 }
 
 loadDropdowns();
